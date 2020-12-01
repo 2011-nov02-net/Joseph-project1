@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project0.Library
+namespace Project1.Domain
 {
     /// <summary>
     /// Provides data fields representing a customer

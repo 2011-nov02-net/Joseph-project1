@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Project0.Library
+namespace Project1.Domain
 {
     /// <summary>
     /// Provides data fields representing an order in

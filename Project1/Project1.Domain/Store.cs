@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace Project0.Library
+namespace Project1.Domain
 {
     /// <summary>
     /// Store has feilds to track it's location, customer list(customers) and inventory list(product)
