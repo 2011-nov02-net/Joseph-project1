@@ -1,0 +1,58 @@
+﻿@model Project1.Domain.Store
+
+@{
+    ViewData["Title"] = "Store Details";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h4>@Html.DisplayFor(m => m.Name)</h4>
+
+<h6>Inventory</h6>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Stock</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Inventory)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => product.Name)</td>
+                <td>@Html.DisplayFor(m => product.Quantity)</td>
+                <td>@Html.DisplayFor(m => product.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h6>Orders</h6>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Items</th>
+            <th>Order Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            @foreach (var order in customer.OrderHistory)
+            {
+        <tr>
+            <td>@Html.DisplayFor(m => order.Id)</td>
+            <td>@order.Selections.Count()</td>
+            <td>$@order.Total()</td>
+            <td>
+                @Html.ActionLink("Details", "OrderDetails", new { id = order.Id })
+            </td>
+        </tr>
+             }
+         }
+    </tbody>
+</table>
+<p>
+    @Html.ActionLink("Back to Stores", "Index")
+</p>

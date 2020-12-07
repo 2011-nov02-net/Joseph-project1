@@ -13,6 +13,7 @@
             <th>@Html.DisplayNameFor(m => m.OrderHistory.First().TargetStore)</th>
             <th>@Html.DisplayNameFor(m => m.OrderHistory.First().Time)</th>
             <th>@Html.DisplayNameFor(m => m.OrderHistory.First().Selections)</th>
+            <th>Quantity</th>
             <th>Total</th>
         </tr>
     </thead>
@@ -24,14 +25,22 @@
             <td>@Html.DisplayFor(m => order.TargetStore.Name)</td>
             <td>@Html.DisplayFor(m => order.Time)</td>
             <td>
-                <ul>
+                <ul style="list-style-type:none;">
                     @foreach (var selection in order.Selections)
                     {
-                        <li>@Html.DisplayFor(m => selection.Name) @Html.DisplayFor(m => selection.Quantity)</li>
+                        <li>@Html.DisplayFor(m => selection.Name)</li>
                     }
                 </ul>
             </td>
-            <td>@order.Total()</td>
+            <td>
+                <ul style="list-style-type:none;">
+                    @foreach (var selection in order.Selections)
+                    {
+                        <li>@Html.DisplayFor(m => selection.Quantity)</li>
+                    }
+                </ul>
+            </td>
+            <td>$@order.Total()</td>
         </tr>
         }
     </tbody>

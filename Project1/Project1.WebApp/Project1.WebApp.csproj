@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Stores\**" />
+    <Content Remove="Views\Stores\**" />
+    <EmbeddedResource Remove="Views\Stores\**" />
+    <None Remove="Views\Stores\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,10 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Project1.Data\Project1.Data.csproj" />
     <ProjectReference Include="..\Project1.Domain\Project1.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Stores\" />
   </ItemGroup>
 
 </Project>

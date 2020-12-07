@@ -1,0 +1,46 @@
+﻿@model Project1.Domain.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h6>Order # @Html.DisplayFor(m => m.Id)</h6>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.TargetStore)</th>
+            <th>@Html.DisplayNameFor(m => m.Time)</th>
+            <th>@Html.DisplayNameFor(m => m.Selections)</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(m => m.TargetStore.Name)</td>
+            <td>@Html.DisplayFor(m => m.Time)</td>
+            <td>
+                <ul style="list-style-type:none;">
+                    @foreach (var selection in Model.Selections)
+                    {
+                        <li>@Html.DisplayFor(m => selection.Name)</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <ul style="list-style-type:none;">
+                    @foreach (var selection in Model.Selections)
+                    {
+                        <li>@Html.DisplayFor(m => selection.Quantity)</li>
+                    }
+                </ul>
+            </td>
+            <td>$@Model.Total()</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Back to Stores", "Index")
+</p>

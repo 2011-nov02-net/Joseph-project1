@@ -15,5 +15,6 @@ namespace Project1.Domain
         List<Store> GetStores(List<Customer> allCustomers);
         public IEnumerable<Customer> GetAllCustomers();
         public void CreateCustomer(string firstName, string lastName, List<Customer> customers);
+        public Order GetOrderById(List<Customer> customers, int orderId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Project1.Domain
 {
@@ -30,6 +31,24 @@ namespace Project1.Domain
             //may want to only track OrderIds
             if (order != null)
                 this.OrderHistory.Add(order);
+        }
+        /// <summary>
+        /// Finds an order in the customer's order history
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public Order GetOrder(int orderId)
+        {
+            //may want to only track OrderIds
+            if (orderId != 0 && this.OrderHistory.Exists(x=> x.Id == orderId))
+            {
+                Order order = this.OrderHistory.First(x => x.Id == orderId);
+                return order;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

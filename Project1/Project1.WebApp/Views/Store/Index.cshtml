@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Project1.Domain.Store>
+
+@{
+    ViewData["Title"] = "Stores";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(m => m.First().Name)</th>
+            <th> Products</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var store in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(m => store.Name)</td>
+            <td>@store.Inventory.Count()</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = store.Id })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -143,6 +143,7 @@ namespace Project1.Data
             };
             return newOrder;
         }
+
         /// <summary>
         /// Enter a new customer into db, and app
         /// </summary>
@@ -267,17 +268,21 @@ namespace Project1.Data
             }*/
             return customers;
         }
-        public IEnumerable<Store> GetAllStores()
+        /// <summary>
+        /// Helper method to find an order in the customer list
+        /// </summary>
+        /// <param name="customers"></param>
+        /// <param name="orderId"></param>
+        /// <returns>an app Order on success, null on failure</returns>
+        public Order GetOrderById(List<Customer> customers, int orderId)
         {
-            using var context = new P1DbContext(_contextOptions);
-            var dbStores = context.Stores.ToList();
-
-            var stores = dbStores.Select(s => new Store(s.Location, s.Name, s.Id));
-            foreach(var store in stores)
+            Order order = null;
+            foreach (var customer in customers)
             {
-                
+                if(customer.GetOrder(orderId) != null)
+                    order = customer.GetOrder(orderId);
             }
-            return stores;
+            return order;
         }
     }
 }
