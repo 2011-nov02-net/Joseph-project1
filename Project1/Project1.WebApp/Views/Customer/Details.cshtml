@@ -3,10 +3,15 @@
 @{
     ViewData["Title"] = "Customer Details";
 }
+<style>
+    tr:nth-child(even) {
+        background-color: antiquewhite;
+    }
+</style>
 <h1>@ViewData["Title"]</h1>
 
 <h6>@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</h6>
-<table class="table">
+<table class="table" style="background-color: azure; border: 1px solid black;">
     <thead>
         <tr>
             <th>Order @Html.DisplayNameFor(m => m.OrderHistory.First().Id)</th>

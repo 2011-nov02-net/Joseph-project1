@@ -3,12 +3,17 @@
 @{
     ViewData["Title"] = "Store Details";
 }
+<style>
+    tr:nth-child(even) {
+        background-color: antiquewhite;
+    }
+</style>
 <h1>@ViewData["Title"]</h1>
 
 <h4>@Html.DisplayFor(m => m.Name)</h4>
 
 <h6>Inventory</h6>
-<table class="table">
+<table class="table" style="background-color: azure;">
     <thead>
         <tr>
             <th>Product</th>
@@ -28,7 +33,7 @@
     </tbody>
 </table>
 <h6>Orders</h6>
-<table class="table">
+<table class="table" style="background-color: azure;">
     <thead>
         <tr>
             <th>Order ID</th>
