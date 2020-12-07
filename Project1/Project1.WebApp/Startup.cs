@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Project1.Data;
 using Project1.Data.Model;
+using Project1.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +31,8 @@ namespace Project1.WebApp
                 options.UseSqlServer(Configuration.GetConnectionString("P1Db")));
 
             services.AddControllersWithViews();
-
+            services.AddScoped<IStoreRepository, StoreRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

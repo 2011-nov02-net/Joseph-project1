@@ -1,0 +1,42 @@
+﻿@model Project1.Domain.Customer
+
+@{
+    ViewData["Title"] = "Customer Details";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h6>@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</h6>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order @Html.DisplayNameFor(m => m.OrderHistory.First().Id)</th>
+            <th>@Html.DisplayNameFor(m => m.OrderHistory.First().TargetStore)</th>
+            <th>@Html.DisplayNameFor(m => m.OrderHistory.First().Time)</th>
+            <th>@Html.DisplayNameFor(m => m.OrderHistory.First().Selections)</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.OrderHistory)
+        {
+        <tr>
+            <td>@Html.DisplayFor(m => order.Id)</td>
+            <td>@Html.DisplayFor(m => order.TargetStore.Name)</td>
+            <td>@Html.DisplayFor(m => order.Time)</td>
+            <td>
+                <ul>
+                    @foreach (var selection in order.Selections)
+                    {
+                        <li>@Html.DisplayFor(m => selection.Name) @Html.DisplayFor(m => selection.Quantity)</li>
+                    }
+                </ul>
+            </td>
+            <td>@order.Total()</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Back to Customers", "Index")
+</p>

@@ -8,19 +8,20 @@ namespace Project1.Domain
     /// </summary>
     public class Customer
     {
-        public string Name { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
         public int Id { get; set; }
-        private static int IdSeed = 1;
         public List<Order> OrderHistory {get;set;}
 
         //TODO: add default (preferred) store
-        public Customer(string name)
+        public Customer(string firstName, string lastName, int Id)
         {
             this.OrderHistory = new List<Order>();
-            this.Name = name;
-            this.Id = IdSeed;
-            ++IdSeed;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Id = Id;
         }
+
         /// <summary>
         /// adds an order to the customer's history
         /// </summary>

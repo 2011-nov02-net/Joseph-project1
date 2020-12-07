@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Project1.Domain.Customer>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(m => m.First().FirstName) @Html.DisplayNameFor(m => m.First().LastName)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => customer.FirstName) @Html.DisplayFor(m => customer.LastName)</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new {id = customer.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Create">New Customer</a>
+</div>

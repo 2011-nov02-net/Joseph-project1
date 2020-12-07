@@ -21,29 +21,26 @@ namespace Project1.Domain
         public string Name { get; }
 
         public int Id { get; set; }
-        private static int _Id = 1;
 
         public List<Product> Inventory { get; set; }
         public List<Customer> Customers { get; set; }
 
-        public Store(List<Product> initialInventory, string address, string name)
+        public Store(List<Product> initialInventory, string address, string name, int id)
         {
             this.Address = address;
             this.Name = name;
             this.Inventory = initialInventory;
             this.Customers = new List<Customer>();
-            this.Id = _Id;
-            ++_Id;
+            this.Id = id;
 
         }
-        public Store(string address, string name)
+        public Store(string address, string name, int id)
         {
             this.Address = address;
             this.Name = name;
             this.Inventory = new List<Product>();
             this.Customers = new List<Customer>();
-            this.Id = _Id;
-            ++_Id;
+            this.Id = id;
 
         }
         /// <summary>
@@ -66,7 +63,7 @@ namespace Project1.Domain
         /// <summary>
         /// Adds an item to the store's inventory list
         /// </summary>
-        public void AddItem(string itemName, int quantity)
+        public void AddItem(string itemName, int quantity, double price)
         {
             //TODO: ensure duplicates are not added
             if (quantity >= 1000)
@@ -75,7 +72,7 @@ namespace Project1.Domain
                 throw new InvalidOperationException($"{quantity} is not a valid quantity.");
             else
             {
-                Inventory.Add(new Product(itemName, quantity) { InStock = true });
+                Inventory.Add(new Product(itemName, quantity,price));
             }
         }
 

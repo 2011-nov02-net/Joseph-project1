@@ -10,6 +10,7 @@ namespace Project1.Data.Model
         public double Price{ get; set; }
         public string Name { get; set; }
 
-        public List<OrderItemsEntity> Stocks { get; set; }
+        public List<OrderItemsEntity> OrderItems { get; set; }
+        public List<InventoryEntity> Inventories { get; set; }
     }
 }

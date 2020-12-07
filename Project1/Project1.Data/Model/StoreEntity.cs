@@ -12,6 +12,6 @@ namespace Project1.Data.Model
 
         //could add customer list, would require link table
         public List<OrderEntity> Orders { get; set; }
-        public List<InventoryEntity> Stocks { get; set; }
+        public List<InventoryEntity> Inventories { get; set; }
     }
 }

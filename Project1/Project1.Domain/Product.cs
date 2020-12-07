@@ -9,9 +9,8 @@ namespace Project1.Domain
     /// </summary>
     public class Product
     {
-        public bool InStock { get; set; }
         public string Name { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
 
         public int Id{ get; set; } //not used currently, name used as db identifier
         private static int _Id = 1;
@@ -24,7 +23,6 @@ namespace Project1.Domain
             {
                 if(value <= 0)
                 {
-                    InStock = false;
                     _quantity = 0;
                 }
                 else
@@ -35,9 +33,10 @@ namespace Project1.Domain
         }
 
         //TODO:check for valid quantity when calling constructor
-        public Product(string name, int initialQuantity)
+        public Product(string name, int initialQuantity,double price)
         {
             this.Name = name;
+            this.Price = price;
             this._quantity = initialQuantity;
             this.Id = _Id;
             ++_Id;

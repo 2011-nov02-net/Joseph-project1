@@ -12,20 +12,18 @@ namespace Project1.Domain
     {
         public Store TargetStore { get; set;  }
         public Customer Orderer { get; set; }
-        public int OrderId { get; set; }
-        private static int _orderId = 1;
+        public int Id { get; set; }
 
         public DateTime Time { get; set; }
         public List<Product> Selections { get; set; } = new List<Product>();
 
-        public Order(Store targetStore, Customer orderer, List<Product> selections)
+        public Order(Store targetStore, Customer orderer, List<Product> selections, int id)
         {
             this.TargetStore = targetStore;
             this.Orderer = orderer;
             this.Selections = selections;
-            this.OrderId = _orderId;
+            this.Id = id;
             this.Time = DateTime.Now;
-            ++_orderId;
         }
 
         /// <summary>
@@ -33,10 +31,17 @@ namespace Project1.Domain
         /// </summary>
         public Order()
         {
-            this.OrderId = _orderId;
             this.Time = DateTime.Now;
-            ++_orderId;
         }
 
+        public double Total()
+        {
+            double total = 0;
+            foreach(var selection in this.Selections)
+            {
+                total += selection.Price * selection.Quantity;
+            }
+            return total;
+        }
     }
 }
