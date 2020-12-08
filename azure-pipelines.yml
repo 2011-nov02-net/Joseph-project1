@@ -88,7 +88,7 @@ stages:
         command: 'publish'
         publishWebProjects: true
         arguments: '--configuration $(buildConfiguration) --output publish'
-        zipAfterPublish: true
+        zipAfterPublish: false
         workingDirectory: 'Project1'
 
     # - publish: Project1/Publish
