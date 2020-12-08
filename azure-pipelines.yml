@@ -91,8 +91,8 @@ stages:
         zipAfterPublish: false
         workingDirectory: 'Project1'
 
-    - publish: Project1/Publish
-      artifact: app
+    # - publish: Project1/Publish
+    #   artifact: app
 
     # - task: PublishBuildArtifacts@1
     #   inputs:
