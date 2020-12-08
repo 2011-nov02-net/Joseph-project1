@@ -14,7 +14,7 @@ trigger:
   paths:
     include:
       - azure-pipelines.yml
-      - SimpleOrderApp
+      - Project1
 
 #short for agent pool as in "build agent"
 stages: 
@@ -32,22 +32,23 @@ stages:
     #in a directory that contains the most recent push on that branch of the repo
     steps:
 
-    - task: UseDotNet@2
-      displayName: ".NET Core 2.x"
-      inputs:
-        version: '2.x'
-        packageType: sdk
+#switch to version 2.x to enable SonarCloud
+    # - task: UseDotNet@2
+    #   displayName: ".NET Core 2.x"
+    #   inputs:
+    #     version: '2.x'
+    #     packageType: sdk
 
-    - task: SonarCloudPrepare@1
-      displayName: prepare analysis
-      inputs:
-        SonarCloud: 'SonarCloud Connection'
-        organization: '2011-nov02-net'
-        scannerMode: 'MSBuild'
-        projectKey: '2011-nov02-net_joseph-code'
-        projectName: 'SimpleOrderApp'
-        extraProperties: |
-          sonar.exclusions=**/lib/**
+    # - task: SonarCloudPrepare@1
+    #   displayName: prepare analysis
+    #   inputs:
+    #     SonarCloud: 'SonarCloud Connection'
+    #     organization: '2011-nov02-net'
+    #     scannerMode: 'MSBuild'
+    #     projectKey: '2011-nov02-net_joseph-code'
+    #     projectName: 'SimpleOrderApp'
+    #     extraProperties: |
+    #       sonar.exclusions=**/lib/**
 
     - task: UseDotNet@2
       displayName: ".NET Core 3.1.x"
@@ -57,15 +58,15 @@ stages:
 
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'dotnet build $(buildConfiguration)'
-      workingDirectory: SimpleOrderApp
+      workingDirectory: Project1
 
-    - task: SonarCloudAnalyze@1
-      displayName: run analysis
+    # - task: SonarCloudAnalyze@1
+    #   displayName: run analysis
       
-    - task: SonarCloudPublish@1
-      displayName: sonar analysis publish
-      inputs:
-        pollingTimeoutSec: '300'
+    # - task: SonarCloudPublish@1
+    #   displayName: sonar analysis publish
+    #   inputs:
+    #     pollingTimeoutSec: '300'
 
     # - task: AzureWebApp@1
     #   inputs:
@@ -79,7 +80,7 @@ stages:
       inputs:
         command: 'test'
         arguments: '--configuration $(buildConfiguration)'
-        workingDirectory: 'SimpleOrderApp'
+        workingDirectory: 'Project1'
 
     - task: DotNetCoreCLI@2
       displayName: 'Dotnet Publish'
@@ -88,9 +89,9 @@ stages:
         publishWebProjects: true
         arguments: '--configuration $(buildConfiguration) --output publish'
         zipAfterPublish: false
-        workingDirectory: 'SimpleOrderApp'
+        workingDirectory: 'Project1'
 
-    - publish: SimpleOrderApp/Publish
+    - publish: Project1/Publish
       artifact: app
 
     # - task: PublishBuildArtifacts@1
@@ -127,5 +128,5 @@ stages:
               ConnectionType: 'AzureRM'
               azureSubscription: 'Azure subscription 1(f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8)'
               appType: 'webApp'
-              WebAppName: 'SimpleOrderAppWebApp20201202134103'
+              WebAppName: 'Project1WebAppJoseph'
               packageForLinux: '$(Pipeline.Workspace)/app'
