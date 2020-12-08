@@ -20,4 +20,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Project1.Data\Project1.Data.csproj" />
+    <ProjectReference Include="..\Project1.Domain\Project1.Domain.csproj" />
+    <ProjectReference Include="..\Project1.WebApp\Project1.WebApp.csproj" />
+  </ItemGroup>
+
 </Project>
