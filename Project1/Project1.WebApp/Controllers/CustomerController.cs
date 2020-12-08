@@ -117,7 +117,8 @@ namespace Project1.WebApp.Controllers
             var custList = new List<Customer>();
             var storeList = _storeRepo.GetStores(custList);
             //get the Store and the Customer for this order
-            int customerId = (int)TempData["customerId"];
+            int customerId = (int)TempData.Peek("customerId");
+            TempData["storeId"] = id;
             var customer = custList.First(x => x.Id == customerId);
             var store = storeList.First(x => x.Id == id);
 
@@ -142,11 +143,26 @@ namespace Project1.WebApp.Controllers
                 }
                 var custList = new List<Customer>();
                 var storeList = _storeRepo.GetStores(custList);
-                Order newOrder = new Order();
 
-                //fillorder here
+                //get the Store and the Customer for this order
+                int customerId = (int)TempData["customerId"];
+                int storeId = (int)TempData["storeId"];
+                var customer = custList.First(x => x.Id == customerId);
+                var store = storeList.First(x => x.Id == storeId);
+                List<Product> selections = new List<Product>();
+
+                //create the Order in application
+                for(int i = 0; i < viewModel.ProductNames.Count(); ++i)
+                {
+                    double price = _storeRepo.GetPrice(viewModel.ProductNames[i]);
+                    selections.Add(new Product(viewModel.ProductNames[i],viewModel.Quantities[i],price));
+                }
+                int newOrderId = _storeRepo.GetLastOrderId() + 1;
+                Order newOrder = new Order(store,customer,selections, newOrderId);
+
+                //enter the Order into the db, then execute it in both db and application
                 _storeRepo.CreateOrder(newOrder);
-                //_storeRepo.FillOrderDb();
+                _storeRepo.FillOrderDb(store,newOrder);
                 return RedirectToAction(nameof(Index));
             }
             catch

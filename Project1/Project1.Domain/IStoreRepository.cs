@@ -16,5 +16,8 @@ namespace Project1.Domain
         public IEnumerable<Customer> GetAllCustomers();
         public void CreateCustomer(string firstName, string lastName, List<Customer> customers);
         public Order GetOrderById(List<Customer> customers, int orderId);
+
+        public double GetPrice(string productName);
+        public int GetLastOrderId();
     }
 }

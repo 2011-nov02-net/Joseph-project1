@@ -34,14 +34,14 @@ namespace Project1.Domain
             this.Time = DateTime.Now;
         }
 
-        public double Total()
+        public decimal Total()
         {
             double total = 0;
             foreach(var selection in this.Selections)
             {
                 total += selection.Price * selection.Quantity;
             }
-            return total;
+            return (decimal)total;
         }
     }
 }

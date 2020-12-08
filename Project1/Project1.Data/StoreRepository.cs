@@ -269,6 +269,34 @@ namespace Project1.Data
             return customers;
         }
         /// <summary>
+        /// gets the price of a product
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns>double price</returns>
+        public double GetPrice(string productName)
+        {
+            double price = 0;
+            using var context = new P1DbContext(_contextOptions);
+
+            var dbProduct = context.Products.First(x=>x.Name == productName);
+            price = dbProduct.Price;
+
+            return price;
+        }
+        /// <summary>
+        /// used to retrieve the last order Id so a new Order can be created without reapeating the Id
+        /// </summary>
+        /// <returns>Id of last order</returns>
+        public int GetLastOrderId()
+        {
+            int id = 0;
+            using var context = new P1DbContext(_contextOptions);
+
+            id = context.Orders.Max(x => x.Id);
+
+            return id;
+        }
+        /// <summary>
         /// Helper method to find an order in the customer list
         /// </summary>
         /// <param name="customers"></param>

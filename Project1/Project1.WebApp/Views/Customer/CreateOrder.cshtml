@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Create Order";
 }
-
+<style>
+    body {
+        background-color: gray
+    }
+</style>
 <h1>@ViewData["Title"]</h1>
 
 <div class="row">
@@ -11,11 +15,12 @@
         <form asp-action="CreateOrder">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                @for(int i = 0; i<Model.ProductNames.Count; ++i) //var productName in Model.ProductNames
+                @for (int i = 0; i < Model.ProductNames.Count(); ++i) 
                 {
-                        <label> @Model.ProductNames[i] </label>
-                        <input asp-for="@Model.Quantities[i]" class="form-control" />
-                        <span asp-validation-for="Quantities" class="text-danger"></span>
+                    <input asp-for="@Model.ProductNames[i]" type="hidden" />
+                    <label asp-for="@Model.Quantities[i]"> @Model.ProductNames[i] Enter Quantity:</label>
+                    <input asp-for="@Model.Quantities[i]" type="number" class="form-control" min="0" max="100"/>
+                    <span asp-validation-for="Quantities" class="text-danger"></span>
                 }
             </div>
                 <div class="form-group">

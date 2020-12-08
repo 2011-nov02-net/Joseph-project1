@@ -25,19 +25,3 @@
         }
     </tbody>
 </table>
-
-@*<form asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="ChosenStore" class="control-label"></label>
-            @Html.DropDownListFor(m => m.ChosenStore,
-                new SelectList(Model.StoreNames),
-                "Select Store")
-            <span asp-validation-for="ChosenStore" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="submit" class="btn btn-primary" />
-        </div>
-    </form>
-*@
-
