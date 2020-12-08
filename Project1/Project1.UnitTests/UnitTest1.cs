@@ -23,7 +23,7 @@ namespace Project1.UnitTests
 
         [Theory]
         [InlineData("bananas", 10)]
-        [InlineData("bananananas", 0)]//handled exception
+        [InlineData("bread", 1)]//handled exception
         public void StoreAddItemTest(string itemName, int quantity)
         {
             List<Product> testInventory = new List<Product>();
@@ -93,9 +93,9 @@ namespace Project1.UnitTests
         }
 
         [Fact]
-        public void StoreFillOrderTest2()//will fail
+        public void StoreFillOrderTest2()
         {
-            Product product2 = new Product("test product2", 5,5);
+            Product product2 = new Product("test product1", 5,12.99);
             Customer testOrderer = new Customer("test", "orderer", 5);
             List<Product> testSelections = new List<Product>() { product2 };
             Store testStore = new Store("123 Fake Street", "Test Store",300)
