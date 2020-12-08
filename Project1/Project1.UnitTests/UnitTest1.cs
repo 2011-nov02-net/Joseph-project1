@@ -107,7 +107,7 @@ namespace Project1.UnitTests
             List<bool> ordersFilled = testStore.FillOrder(testOrder);
 
             Assert.True(ordersFilled.First() == false);
-            Assert.True(testStore.Inventory.First().Quantity == 10);
+            Assert.True(testStore.Inventory.First().Quantity == 5);
         }
 
         [Fact]
