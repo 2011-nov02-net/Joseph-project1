@@ -22,7 +22,8 @@
             <tr>
                 <td>@Html.DisplayFor(m => customer.FirstName) @Html.DisplayFor(m => customer.LastName)</td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new {id = customer.Id })
+                    @Html.ActionLink("Details", "Details", new { id = customer.Id }) |
+                    @Html.ActionLink("New Order", "ChooseStore", new { id = customer.Id })
                 </td>
             </tr>
         }

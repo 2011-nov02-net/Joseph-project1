@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Project1.Domain.Store>
+
+@{
+    ViewData["Title"] = "Stores";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(m => m.First().Name)</th>
+            <th> Products</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var store in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => store.Name)</td>
+                <td>@store.Inventory.Count()</td>
+                <td>
+                    @Html.ActionLink("Order Here", "CreateOrder", new { id = store.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ChosenStore" class="control-label"></label>
+            @Html.DropDownListFor(m => m.ChosenStore,
+                new SelectList(Model.StoreNames),
+                "Select Store")
+            <span asp-validation-for="ChosenStore" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="submit" class="btn btn-primary" />
+        </div>
+    </form>
+*@
+

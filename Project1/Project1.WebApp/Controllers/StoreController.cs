@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Project1.Domain;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,11 @@ namespace Project1.WebApp.Controllers
     public class StoreController : Controller
     {
         private readonly IStoreRepository _storeRepo;
-        public StoreController(IStoreRepository storeRepository)
+        private readonly ILogger<StoreController> _logger;
+        public StoreController(IStoreRepository storeRepository, ILogger<StoreController> logger)
         {
             _storeRepo = storeRepository;
+            _logger = logger;
         }
         // GET: StoreController
         public ActionResult Index()
@@ -36,7 +39,7 @@ namespace Project1.WebApp.Controllers
             var custList = new List<Customer>();
             var storeList = _storeRepo.GetStores(custList);
             var order = _storeRepo.GetOrderById(custList, id);
-            //var customer = custList.Where(x=>x.OrderHistory.Contains(y=>y.orderId == id)).First();
+
             return View(order);
         }
         // GET: StoreController/Create
