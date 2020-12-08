@@ -130,4 +130,4 @@ stages:
         azureSubscription: 'Azure subscription 1(f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8)'
         appType: 'webApp'
         WebAppName: 'Project1WebAppJoseph'
-        packageForLinux: '$(Pipeline.Workspace)/publish'
+        packageForLinux: 'Project1/publish'
