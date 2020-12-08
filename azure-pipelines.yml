@@ -126,8 +126,6 @@ stages:
     - task: AzureRmWebAppDeployment@4
       displayName: azure app service deploy
       inputs:
-        UseWebDeploy: true 
-        DeploymentType: webDeploy
         ConnectionType: 'AzureRM'
         azureSubscription: 'Azure subscription 1(f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8)'
         appType: 'webApp'
