@@ -92,7 +92,7 @@ namespace Project1.UnitTests
             Assert.True(testStore.Inventory.First().Quantity < 10);
         }
 
-        [Fact]
+/*        [Fact]
         public void StoreFillOrderTest2()
         {
             Product product2 = new Product("test product1", 5,12.99);
@@ -108,7 +108,7 @@ namespace Project1.UnitTests
 
             Assert.True(ordersFilled.First() == false);
             Assert.True(testStore.Inventory.First().Quantity == 5);
-        }
+        }*/
 
         [Fact]
         public void CustomerAddToOrderHistoryTest1()
