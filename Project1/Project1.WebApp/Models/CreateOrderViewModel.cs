@@ -11,7 +11,6 @@ namespace Project1.WebApp.Models
         public List<string> ProductNames { get; set; }
         
         [Required]
-        //[Range(0,100)]
         public List<int> Quantities { get; set; }
     }
 }

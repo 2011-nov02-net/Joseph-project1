@@ -76,41 +76,8 @@ namespace Project1.WebApp.Controllers
             var storeList = _storeRepo.GetStores(custList);
             TempData["customerId"] = id;
             return View(storeList);
-            /*var custList = new List<Customer>();
-            var storeList = _storeRepo.GetStores(custList);
-            List<string> storeNames = storeList.Select(x => x.Name).ToList();
-            var customer = custList.First(x => x.Id == id);
-            TempData["customer"] = customer;
-
-
-            var viewModel = new ChooseStoreViewModel {StoreNames = storeNames };
-
-            return View(viewModel);*/
         }
 
-        // POST: CustomerController/ChooseStore/5
-/*        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult ChooseStore(ChooseStoreViewModel viewModel, int id)
-        {
-            try
-            {
-                var custList = new List<Customer>();
-                var storeList = _storeRepo.GetStores(custList);
-                List<string> storeNames = storeList.Select(x => x.Name).ToList();
-
-                viewModel = new ChooseStoreViewModel { StoreNames = storeNames };
-                if (!ModelState.IsValid)
-                {
-                    return View(viewModel);
-                }
-                return RedirectToAction(nameof(CreateOrder));
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
         // GET: CustomerController/CreateOrder/5
         public IActionResult CreateOrder(int id)
         {

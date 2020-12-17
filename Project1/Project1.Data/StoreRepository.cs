@@ -243,29 +243,6 @@ namespace Project1.Data
                 Include(c => c.OrderItems).ToList();
 
             var customers = dbCustomers.Select(c => new Customer(c.FirstName, c.LastName, c.Id));
-            /*foreach (var order in dbOrders)
-            {
-                bool created = false;
-                foreach (var customer in customers)
-                {
-                    if (customer.Id == order.CustomerId)
-                    {
-                        created = true;
-                        Store appStore = order.Store;
-                        appStore.AddCustomer(customer);
-                        customer.AddToOrderHistory(GetOrder(order.Id, appStore, customer));
-                    }
-                }
-                //if not, create new customer
-                if (!created)
-                {
-                    int newId = dbCustomers.Max(c => c.Id) + 1;
-                    Customer newCustomer = new Customer(order.Customer.FirstName, order.Customer.LastName, newId);
-                    appStore.AddCustomer(newCustomer);
-                    allCustomers.Add(newCustomer);
-                    newCustomer.AddToOrderHistory(GetOrder(order.Id, appStore, newCustomer));
-                }
-            }*/
             return customers;
         }
         /// <summary>
