@@ -29,5 +29,5 @@ git clone https://github.com/2011-nov02-net/Joseph-project1
 
 ## License
 
-This project uses the following license: [MIT](<link>).
+This project uses the following license: [MIT](<https://github.com/2011-nov02-net/Joseph-project1/blob/master/LICENSE>).
 
