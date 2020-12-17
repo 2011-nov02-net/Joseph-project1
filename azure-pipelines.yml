@@ -91,8 +91,8 @@ stages:
         zipAfterPublish: false
         workingDirectory: 'Project1'
 
-    - publish: Project1/Publish
-      artifact: app
+    # - publish: Project1/Publish
+    #   artifact: app
 
     # - task: PublishBuildArtifacts@1
     #   inputs:
@@ -110,23 +110,24 @@ stages:
     #     WebAppName: 'SimpleOrderAppWebApp20201202134103'
     #     packageForLinux: 'SimpleOrderApp/publish'
   
-- stage: release
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master') )
-  jobs:
-  - deployment: appService
-    environment: prod
-    strategy:
-     runOnce:
-       deploy:
-         steps:
-           - download: current
-             artifact: app
-             displayName: download app
+# - stage: release
+#   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master') )
+#   jobs:
+#   - deployment: appService
+#     environment: prod
+#     strategy:
+#      runOnce:
+#        deploy:
+#          steps:
+#            - download: current
+#              artifact: app
+#              displayName: download app
 
-           - task: AzureRmWebAppDeployment@4
-             inputs:
-              ConnectionType: 'AzureRM'
-              azureSubscription: 'Azure subscription 1(f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8)'
-              appType: 'webApp'
-              WebAppName: 'Project1WebAppJoseph'
-              packageForLinux: '$(Pipeline.Workspace)/app'
+    - task: AzureRmWebAppDeployment@4
+      displayName: azure app service deploy
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure subscription 1(f3f9f21d-d2c7-4e29-8aa7-6beab2a7e2e8)'
+        appType: 'webApp'
+        WebAppName: 'Project1WebAppJoseph'
+        packageForLinux: 'Project1/publish'
