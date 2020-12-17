@@ -27,6 +27,7 @@ To-do list:
 git clone https://github.com/2011-nov02-net/Joseph-project1
 
 Navigate to: /Joseph-project1/Project1/Project1.WebApp
+
 dotnet run
 
 ## License
